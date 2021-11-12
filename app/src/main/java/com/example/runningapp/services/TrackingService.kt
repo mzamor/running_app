@@ -11,6 +11,7 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.lifecycle.LifecycleService
+import com.example.runningapp.R
 import com.example.runningapp.other.Constants.ACTION_PAUSE_SERVICE
 import com.example.runningapp.other.Constants.ACTION_SHOW_TRACKING_FRAGMENT
 import com.example.runningapp.other.Constants.ACTION_START_OR_RESUME_SERVICE
@@ -58,7 +59,8 @@ class TrackingService  : LifecycleService(){
         val notificationBuilder = NotificationCompat.Builder(this,NOTIFICATION_CHANNEL_ID)
             .setAutoCancel(false)
             .setOngoing(true)
-            .setContentTitle("Running Appx")
+            .setSmallIcon(R.drawable.common_full_open_on_phone)
+            .setContentTitle("Running App")
             .setContentText("00:00:00")
             .setContentIntent(getMainActivityPendingIntent())
 
