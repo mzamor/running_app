@@ -74,10 +74,12 @@ class TrackingService  : LifecycleService(){
                         isFirstRun = false
                     }else{
                         Timber.d("Resuming service")
+                        startForegroundService()
                     }
                 }
                 ACTION_PAUSE_SERVICE ->{
                     Timber.d("Paused service")
+                    pauseService()
                 }
                 ACTION_STOP_SERVICE ->{
                     Timber.d("Stop service")
@@ -86,6 +88,10 @@ class TrackingService  : LifecycleService(){
         }
 
         return super.onStartCommand(intent, flags, startId)
+    }
+
+    private fun pauseService(){
+        isTracking.postValue(false)
     }
 
     @SuppressLint("MissingPermission")
